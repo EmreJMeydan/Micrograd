@@ -1,18 +1,25 @@
 class Value:
 
-    def __init__(self, data):
+    def __init__(self, data, _children=(), _op=''):
         self.data = data
+        self._op = _op
+        self._prev = set(_children)
 
     def __repr__(self):
         return f"Value(data={self.data})"
 
     def __add__(self, other):
-        return self.data + other.data
+        return Value(self.data + other.data, (self, other), "+")
 
     def __mul__(self, other):
-        return self.data * other.data
+        return Value(self.data * other.data, (self, other), "*")
 
-test_1 = Value(2.0)
-test_2 = Value(3.0)
-print(test_1 + test_2)
-print(test_1 * test_2)
+a = Value(2.0)
+b = Value(-3.0)
+c = Value(10.0)
+
+L = a*b + c
+
+print(L.data)
+print(L._op)
+print(L._prev)
