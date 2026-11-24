@@ -9,6 +9,10 @@ class Value:
     def __add__(self, other):
         return self.data + other.data
 
+    def __mul__(self, other):
+        return self.data * other.data
+
 test_1 = Value(2.0)
 test_2 = Value(3.0)
 print(test_1 + test_2)
+print(test_1 * test_2)
