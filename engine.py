@@ -2,6 +2,7 @@ class Value:
 
     def __init__(self, data, _children=(), _op=''):
         self.data = data
+        self.grad = 0.0
         self._op = _op
         self._prev = set(_children)
 
@@ -23,3 +24,4 @@ L = a*b + c
 print(L.data)
 print(L._op)
 print(L._prev)
+print(L.grad)
